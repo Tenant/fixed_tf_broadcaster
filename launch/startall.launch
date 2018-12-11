@@ -1,0 +1,21 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+  <rosparam>
+    /use_sim_time: true
+  </rosparam>
+
+  <node pkg="fixed_tf_broadcaster" type="map_broadcaster.py" name="map_broadcaster"
+output="screen" />
+
+  <node pkg="fixed_tf_broadcaster" type="camera_broadcaster.py" name="camera_broadcaster"
+output="screen" />
+
+  <include file="$(find velodyne_pointcloud)/launch/32e_points.launch"></include>  
+
+
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock -r 0.8  /home/sukie/Lab/Data/campus/data.bag"/>
+
+ <include file="$(find loam_velodyne)/launch/loam_velodyne.launch"></include> 
+
+</launch>
