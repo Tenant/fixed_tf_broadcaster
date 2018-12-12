@@ -11,10 +11,13 @@ output="screen" />
   <node pkg="fixed_tf_broadcaster" type="camera_broadcaster.py" name="camera_broadcaster"
 output="screen" />
 
+  <node pkg="fixed_tf_broadcaster" type="odom_saver.py" name="odom_saver"
+output="screen" />
+
   <include file="$(find velodyne_pointcloud)/launch/32e_points.launch"></include>  
 
 
-  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock -r 0.8  /home/sukie/Lab/Data/campus/data.bag"/>
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock -r 0.8  /home/sukie/Lab/Data/20181121-campus/data.bag"/>
 
  <include file="$(find loam_velodyne)/launch/loam_velodyne.launch"></include> 
 
