@@ -10,7 +10,9 @@ def callback(msg):
     x = msg.pose.pose.position.x
     y = msg.pose.pose.position.y
     z = msg.pose.pose.position.z
-    information = str(x)+" "+str(y) + " " + str(z)
+
+    #print(msg.pose.pose)
+    information = str(msg.header.stamp) +" " + str(x)+" "+str(y) + " " + str(z) + " {:.5f} {:.5f} {:.5f} {:.5f}".format(msg.pose.pose.orientation.x, msg.pose.pose.orientation.y, msg.pose.pose.orientation.z, msg.pose.pose.orientation.w)
     file = open("/home/sukie/odometry.txt","a")
     file.write(information + '\n')
     file.close()
