@@ -17,11 +17,14 @@ output="screen" />
   <node pkg="fixed_tf_broadcaster" type="odom_broadcaster_201.py" name="odom_broadcaster"
 output="screen" />
 
+  <node pkg="fixed_tf_broadcaster" type="odom_saver.py" name="odom_saver"
+output="screen" />
+
   <include file="$(find velodyne_pointcloud)/launch/64e_points_201.launch"></include>  
 
 
   <!-- <node pkg="rosbag" type="play" name="player" output="screen" args="clock -r 0.8 pause  /home/sukie/Lab/Data/guilin/data.bag"/> -->
-  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock /media/sukie/Treasure/Lab/Data/A-data/final_2018-09-12-15-05-31_23/outbag.bag"/>
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock -s 102 /media/sukie/Treasure/Lab/Data/A-data/final_2018-09-12-14-45-58_19/final_2018-09-12-14-45-58_19.bag"/>
 
   <include file="$(find loam_velodyne)/launch/loam_velodyne.launch"></include> 
 

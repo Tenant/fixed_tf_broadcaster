@@ -12,8 +12,12 @@ def callback(msg):
     z = msg.pose.pose.position.z
 
     #print(msg.pose.pose)
-    information = str(msg.header.stamp) +" " + str(x)+" "+str(y) + " " + str(z) + " {:.5f} {:.5f} {:.5f} {:.5f}".format(msg.pose.pose.orientation.x, msg.pose.pose.orientation.y, msg.pose.pose.orientation.z, msg.pose.pose.orientation.w)
-    file = open("/home/sukie/odometry.txt","a")
+    #information = str(msg.header.stamp) +" " + str(x)+" "+str(y) + " " + str(z) + " {:.5f} {:.5f} {:.5f} {:.5f}".format(msg.pose.pose.orientation.x, msg.pose.pose.orientation.y, msg.pose.pose.orientation.z, msg.pose.pose.orientation.w)
+    orientation_q = msg.pose.pose.orientation
+    orientation_list = [orientation_q.x, orientation_q.y, orientation_q.z, orientation_q.w]
+    (roll, pitch, yaw) = euler_from_quaternion (orientation_list)
+    information = str(msg.header.stamp) + " " + str(x) + " " + str(y) + " " + str(z) + " " + str(roll) + " " + str(pitch) + " " + str(yaw)
+    file = open("/home/sukie/Desktop/data/odometry.txt","a")
     file.write(information + '\n')
     file.close()
     print(information)
