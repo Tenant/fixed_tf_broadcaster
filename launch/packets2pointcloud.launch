@@ -1,0 +1,14 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+  <rosparam>
+    /use_sim_time: true
+  </rosparam>
+
+  <include file="$(find velodyne_pointcloud)/launch/64e_points_201.launch"></include>  
+
+  <node pkg="rosbag" type="play" name="player" output="screen" args="--clock -s 102 /media/sukie/Treasure/Lab/Data/A-data/final_2018-09-12-14-45-58_19/final_2018-09-12-14-45-58_19.bag"/>
+
+  <node pkg="rosbag" type="record" name="recorder" args="-a -O /media/sukie/Treasure/Lab/Data/A-data/final_2018-09-12-14-45-58_19/contain-pointcloud2.bag"/>
+
+</launch>
